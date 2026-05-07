@@ -44,7 +44,7 @@ sync_data(
     source_sheet="raw_bi",
     source_range="B:W",
     dest_id="1dh755S5NnbyRNsytWc8JYJ6BgYIOD979-AZwBH8yshs",
-    dest_sheet="raw",
+    dest_sheet="raw_soc",
     dest_cols_to_clear="V"
 )
 
