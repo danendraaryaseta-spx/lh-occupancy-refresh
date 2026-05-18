@@ -72,6 +72,6 @@ time.sleep(10)
 
 # TASK 2: FM SYNC
 run_sync(
-    "1xRjNqKiOSXIDiKDNYmbYhQaBz2n6NMyO5Uf6HrpMmFE", "raw_bi", "B:Z",
-    "1dh755S5NnbyRNsytWc8JYJ6BgYIOD979-AZwBH8yshs", "raw_fm", "Y"
+    "1xRjNqKiOSXIDiKDNYmbYhQaBz2n6NMyO5Uf6HrpMmFE", "raw_bi", "B:AA",
+    "1dh755S5NnbyRNsytWc8JYJ6BgYIOD979-AZwBH8yshs", "raw_fm", "Z"
 )
