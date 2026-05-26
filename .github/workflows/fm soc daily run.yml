@@ -1,0 +1,27 @@
+name: Daily Sheet Sync fm soc
+
+on:
+  schedule:
+    # 05:00 UTC is 12:00 PM (Noon) WIB
+    - cron: '0 5 * * *'
+  workflow_dispatch: # Allows you to run it manually anytime for testing
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run script
+        env:
+          GCP_SERVICE_ACCOUNT_KEY: ${{ secrets.GCP_SERVICE_ACCOUNT_KEY }}
+        run: python script.py
