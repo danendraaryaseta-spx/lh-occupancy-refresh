@@ -64,14 +64,3 @@ def run_sync(s_id, s_name, s_range, d_id, d_name, clear_to):
 run_sync(
     "1Eb5K-ZnX6WyYr1kUXmLG03RVuz0IOPLru8IHSZc4Je4", "raw_bi", "B:W",
     "1dh755S5NnbyRNsytWc8JYJ6BgYIOD979-AZwBH8yshs", "raw_soc", "V"
-)
-
-# Longer pause between different sheets
-print("Waiting for API cooldown...")
-time.sleep(10)
-
-# TASK 2: FM SYNC
-run_sync(
-    "1xRjNqKiOSXIDiKDNYmbYhQaBz2n6NMyO5Uf6HrpMmFE", "raw_bi", "B:AA",
-    "1dh755S5NnbyRNsytWc8JYJ6BgYIOD979-AZwBH8yshs", "raw_fm", "Z"
-)
