@@ -94,3 +94,11 @@ run_sync(
     "1dh755S5NnbyRNsytWc8JYJ6BgYIOD979-AZwBH8yshs", "raw_soc",
     filter_col="C", filter_value="Hub"
 )
+
+# TASK 2: SOC SYNC (DC)
+run_sync(
+    "1Eb5K-ZnX6WyYr1kUXmLG03RVuz0IOPLru8IHSZc4Je4", "raw_bi",
+    ["B", "C", "D", "E", "F", "J", "K", "V", "W"],
+    "1rruN5xFUi7YXm122fN5aSpidEjsLV_U0iw6rl5IMDyQ", "raw_soc",
+    filter_col="C", filter_value="DC"
+)
