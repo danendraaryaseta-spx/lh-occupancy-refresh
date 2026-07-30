@@ -19,7 +19,7 @@ def col_letter_to_index(letter):
 def index_to_col_letter(index):
     return string.ascii_uppercase[index]
 
-def run_sync(s_id, s_name, s_columns, d_id, d_name):
+def run_sync(s_id, s_name, s_columns, d_id, d_name, filter_col=None, filter_value=None):
     print(f"\n--- Starting Sync: {s_name} -> {d_name} ---")
     try:
         swb = gc.open_by_key(s_id)
@@ -33,14 +33,19 @@ def run_sync(s_id, s_name, s_columns, d_id, d_name):
         last_letter = index_to_col_letter(last_col)
         width = last_col - first_col + 1
 
+        filter_index = col_letter_to_index(filter_col) - first_col if filter_col else None
+
         print(f"Fetching columns {s_columns} (range {first_letter}:{last_letter}) from {s_name}...")
         raw = sws.get(f"{first_letter}:{last_letter}")
 
         data = []
         for row in raw:
             padded = row + [""] * (width - len(row))
-            if any(str(c).strip() != "" for c in padded):
-                data.append([padded[i - first_col] for i in col_indices])
+            if not any(str(c).strip() != "" for c in padded):
+                continue
+            if filter_index is not None and filter_value.upper() not in str(padded[filter_index]).upper():
+                continue
+            data.append([padded[i - first_col] for i in col_indices])
 
         total_rows = len(data)
         print(f"Captured {total_rows} rows.")
@@ -86,5 +91,6 @@ def run_sync(s_id, s_name, s_columns, d_id, d_name):
 run_sync(
     "1Eb5K-ZnX6WyYr1kUXmLG03RVuz0IOPLru8IHSZc4Je4", "raw_bi",
     ["B", "C", "D", "E", "F", "J", "K", "V", "W"],
-    "1dh755S5NnbyRNsytWc8JYJ6BgYIOD979-AZwBH8yshs", "raw_soc"
+    "1dh755S5NnbyRNsytWc8JYJ6BgYIOD979-AZwBH8yshs", "raw_soc",
+    filter_col="C", filter_value="Hub"
 )
